@@ -6,6 +6,7 @@ package com.mycompany.carracesimulation;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -31,16 +32,27 @@ public class CarData {
     }
     
     
-    public List<Shape> getCarShape() {
-        List<Shape> shapes = new ArrayList<>();
+    public Group getCarShape() {
+//        List<Shape> shapes = new ArrayList<>();
+        Group shapes = new Group();
+        Shape poly = new Polygon(0.0, 0.0,
+                20.0, 10.0,
+                10.0, 20.0);
+        Shape wheel1 = new Circle(0, 10, 5);
+        Shape wheel2 = new Circle(20, 10, 5);
+        Shape text = new Text(String.valueOf(number));
+        text.setTranslateY(10);
+
+        poly.setFill(Color.RED);
+        wheel1.setFill(Color.BLACK);
+        wheel2.setFill(Color.BLACK);
         
-        shapes.add(new Polygon(1,1, 5,5, 10, 10, 0, 0));
-        shapes.add(new Circle(5, 0, 0));
-        shapes.add(new Circle(5, 5, 0));
-        shapes.add(new Text(String.valueOf(number)));
-        
+        shapes.getChildren().add(poly);
+        shapes.getChildren().add(wheel1);
+        shapes.getChildren().add(wheel2);
+        shapes.getChildren().add(text);
+
         return shapes;
     }
-    
     
 }

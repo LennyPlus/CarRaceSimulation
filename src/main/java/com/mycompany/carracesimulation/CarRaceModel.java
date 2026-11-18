@@ -9,7 +9,7 @@ package com.mycompany.carracesimulation;
  * @author anasi
  */
 public class CarRaceModel {
-    private int number;
-    private
+//    private int number;
+//    private
     
 }

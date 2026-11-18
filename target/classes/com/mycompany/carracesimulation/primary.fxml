@@ -10,19 +10,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="418.0" prefWidth="616.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.carracesimulation.PrimaryController">
+<VBox alignment="CENTER" prefHeight="418.0" prefWidth="616.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.carracesimulation.CarRaceController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
       <HBox spacing="5.0">
          <children>
-            <Label prefHeight="258.0" prefWidth="0.0" style="-fx-background-color: GREEN; -fx-background-radius: 5 0 0 5;" text="Starting" wrapText="true">
+            <Label prefHeight="258.0" style="-fx-background-color: GREEN; -fx-background-radius: 5 0 0 5;" text="Starting" wrapText="true">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="14.0" />
                </font>
             </Label>
-            <Pane prefWidth="600.0" style="-fx-background-color: GREY;" />
+            <Pane fx:id="carRacePane" prefWidth="600.0" style="-fx-background-color: GREY;" />
             <Label layoutX="10.0" layoutY="10.0" prefHeight="258.0" prefWidth="0.0" style="-fx-background-color: GREEN; -fx-background-radius: 0 5 5 0;" text="Arrival" wrapText="true">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="14.0" />
@@ -53,6 +53,11 @@
                         <Label text="1.0x" />
                      </children>
                   </HBox>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label text="Race Finished!" />
                </children>
             </VBox>
          </children>

@@ -22,7 +22,7 @@
                   <Font name="0xProto Nerd Font Mono" size="14.0" />
                </font>
             </Label>
-            <Pane prefWidth="600.0" style="-fx-background-color: GREY;" />
+            <Pane fx:id="carRacePane" prefWidth="600.0" style="-fx-background-color: GREY;" />
             <Label layoutX="10.0" layoutY="10.0" prefHeight="258.0" prefWidth="0.0" style="-fx-background-color: GREEN; -fx-background-radius: 0 5 5 0;" text="Arrival" wrapText="true">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="14.0" />
