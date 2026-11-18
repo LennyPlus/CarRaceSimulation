@@ -25,23 +25,15 @@ public class CarRaceController implements Initializable{
     @FXML
     private Pane carRacePane;
     
-    private static int carAmount = 10;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         double height = 258;
         
+        CarRaceModel carRaceModel = new CarRaceModel(4, height);
+        
         // Generate random cars and add them to the pane
-        Random rand = new Random();
-        List<Group> carShapes = new ArrayList();
-        
-        for (int i = 0; i < carAmount; i++) {
-            CarData car = new CarData(rand.nextInt(100) + 1, 10, new Point2D(0, height / (double) carAmount * i), Color.CORAL);
-            
-            carShapes.add(car.getCarShape());
-        }
-        
-        carRacePane.getChildren().addAll(carShapes);
+        carRacePane.getChildren().addAll(carRaceModel.getCarShapes());
         
     }
     

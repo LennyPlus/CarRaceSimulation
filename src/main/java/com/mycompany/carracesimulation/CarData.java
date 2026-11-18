@@ -45,7 +45,7 @@ public class CarData {
         text.setTranslateY(10);
 
         // Set color
-        poly.setFill(Color.RED);
+        poly.setFill(color);
         wheel1.setFill(Color.BLACK);
         wheel2.setFill(Color.BLACK);
         text.setFill(Color.WHITE);
