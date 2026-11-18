@@ -6,6 +6,7 @@ package com.mycompany.carracesimulation;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -21,10 +22,10 @@ public class CarData {
     private int number;
     private double speed;
     // Position along the race track, no need for y coordinates
-    private double position;
+    private Point2D position;
     private Color color;
 
-    public CarData(int number, double speed, double position, Color color) {
+    public CarData(int number, double speed, Point2D position, Color color) {
         this.number = number;
         this.speed = speed;
         this.position = position;
@@ -43,15 +44,21 @@ public class CarData {
         Shape text = new Text(String.valueOf(number));
         text.setTranslateY(10);
 
+        // Set color
         poly.setFill(Color.RED);
         wheel1.setFill(Color.BLACK);
         wheel2.setFill(Color.BLACK);
+        text.setFill(Color.WHITE);
         
         shapes.getChildren().add(poly);
         shapes.getChildren().add(wheel1);
         shapes.getChildren().add(wheel2);
         shapes.getChildren().add(text);
-
+        
+        // Set the translation for the shape
+        shapes.setTranslateY(position.getX());
+        shapes.setTranslateY(position.getY());
+        
         return shapes;
     }
     
