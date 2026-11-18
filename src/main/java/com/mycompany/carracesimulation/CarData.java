@@ -24,16 +24,23 @@ public class CarData {
     // Position along the race track, no need for y coordinates
     private Point2D position;
     private Color color;
+    
+    private Group carShape;
 
     public CarData(int number, double speed, Point2D position, Color color) {
         this.number = number;
         this.speed = speed;
         this.position = position;
         this.color = color;
+        
+        this.carShape = generateCarShape();
     }
     
-    
     public Group getCarShape() {
+        return carShape;
+    }
+    
+    public Group generateCarShape() {
 //        List<Shape> shapes = new ArrayList<>();
         Group shapes = new Group();
         Shape poly = new Polygon(0.0, 0.0,
@@ -56,10 +63,19 @@ public class CarData {
         shapes.getChildren().add(text);
         
         // Set the translation for the shape
-        shapes.setTranslateY(position.getX());
+        shapes.setTranslateX(position.getX());
         shapes.setTranslateY(position.getY());
         
         return shapes;
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+    
     
 }

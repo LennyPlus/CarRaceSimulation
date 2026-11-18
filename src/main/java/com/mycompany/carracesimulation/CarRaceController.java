@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
@@ -25,18 +26,28 @@ public class CarRaceController implements Initializable{
     @FXML
     private Pane carRacePane;
     
+    private CarRaceModel carRaceModel;
+    
+    private double trackSizeX = 512;
+    private double trackSizeY = 258;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        double height = 258;
+//        double height = 258;
         
-        CarRaceModel carRaceModel = new CarRaceModel(4, height);
+        carRaceModel = new CarRaceModel(10, trackSizeX, trackSizeY);
         
         // Generate random cars and add them to the pane
         carRacePane.getChildren().addAll(carRaceModel.getCarShapes());
         
     }
     
+    
+    @FXML
+    void onStarButtonPressed(ActionEvent event) {
+        System.out.println("hiii");
+        carRaceModel.moveCars();
+    }
     
 
 }

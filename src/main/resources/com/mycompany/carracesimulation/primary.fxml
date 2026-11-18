@@ -36,7 +36,7 @@
                <children>
                   <HBox spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Start" />
+                        <Button mnemonicParsing="false" onAction="#onStarButtonPressed" text="Start" />
                         <Region HBox.hgrow="ALWAYS" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Pause" />
                         <Region HBox.hgrow="ALWAYS" />

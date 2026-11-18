@@ -7,9 +7,11 @@ package com.mycompany.carracesimulation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 /**
  *
@@ -17,22 +19,25 @@ import javafx.scene.paint.Color;
  */
 public class CarRaceModel {
     private List<CarData> cars;
+    private List<TranslateTransition> transAnimations = new ArrayList<>();
     private int carAmount = 10;
+    private double trackSizeY = 0;
+    private double trackSizeX = 0;
     
-    
-    public CarRaceModel(int carAmount,double height) {
-        this.cars = generateRandomCars(carAmount, height);
+    public CarRaceModel(int carAmount, double width, double height) {
+        this.carAmount = carAmount;
+        this.cars = generateRandomCars(height);
+        this.trackSizeX = width;
+        this.trackSizeY = height;
     }
     
     // Returns a list of random cars
-    public static List<CarData> generateRandomCars(int carAmount, double height) {
+    public List<CarData> generateRandomCars(double height) {
         List<CarData> carDatas = new ArrayList();
         Random rand = new Random();
 
         for (int i = 0; i < carAmount; i++) {
-            CarData car = new CarData(rand.nextInt(1, 100), 10, new Point2D(0, height / (double) carAmount * i), Color.hsb(rand.nextDouble(0, 270), 1, 1));
-//            CarData car = new CarData(rand.nextInt(1, 100), 10, new Point2D(0, 100), Color.CORAL);
-
+            CarData car = new CarData(rand.nextInt(1, 100), rand.nextDouble(10, 50), new Point2D(0, height / (double) carAmount * i), Color.hsb(rand.nextDouble(0, 360), 1, 1));
             carDatas.add(car);
         }
         
@@ -50,4 +55,18 @@ public class CarRaceModel {
         
         return carShapes;
     }
+    
+    public void moveCars() {
+        for (int i = 0; i < carAmount; i++) {
+            TranslateTransition transAnim = new TranslateTransition(Duration.seconds(trackSizeY / cars.get(i).getSpeed()), cars.get(i).getCarShape());
+            transAnim.setByX(trackSizeX);
+            transAnimations.add(transAnim);
+            transAnim.play();
+        }
+    }
+    
+    public void stopCars() {
+        transAnimations.stream().forEach(TranslateTransition::stop);
+    }
+    
 }
