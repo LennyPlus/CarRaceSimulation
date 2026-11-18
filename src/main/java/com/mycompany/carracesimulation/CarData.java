@@ -48,7 +48,7 @@ public class CarData {
         poly.setFill(color);
         wheel1.setFill(Color.BLACK);
         wheel2.setFill(Color.BLACK);
-        text.setFill(Color.WHITE);
+        text.setFill(Color.BLACK);
         
         shapes.getChildren().add(poly);
         shapes.getChildren().add(wheel1);
