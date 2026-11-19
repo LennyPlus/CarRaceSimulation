@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -41,20 +43,23 @@ public class SlideshowController implements Initializable {
         welcome.setStyle("-fx-font-size: 30px;");
         
         slideshowPane.getChildren().add(welcome);
+            
+        
+        // Create the MediaPlayer   
+        Media media = new Media(
+                getClass().getResource("blipSelect.wav").toExternalForm()
+        );
+
+        MediaPlayer player = new MediaPlayer(media);
+
         
         // Create the slideshow
-//        Media media = new Media(
-//                getClass().getResource("/sounds/music.mp3").toExternalForm()
-//        );
-//
-//        MediaPlayer player = new MediaPlayer(media);
-//        player.play();
-        
-        
-        
         slideshow = new Timeline(
-                new KeyFrame(Duration.seconds(0.2), event -> {
+                new KeyFrame(Duration.seconds(1), event -> {
                     showNextCar();
+                    
+                    player.stop();
+                    player.play();
                 })
         );
 
@@ -72,6 +77,9 @@ public class SlideshowController implements Initializable {
     }    
     
     
+    /**
+     * Shows the next car in the race
+     */
     private void showNextCar() {
         if (currentCarIndex == -1) {
             currentCarIndex++;

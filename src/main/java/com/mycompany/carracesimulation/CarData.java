@@ -36,10 +36,10 @@ public class CarData {
         this.carShape = generateCarShape();
     }
     
-    public Group getCarShape() {
-        return carShape;
-    }
-    
+    /**
+     * Generates a car shape using JavaFX's Shape class
+     * @return A Group object containing the generated Shapes
+     */
     public Group generateCarShape() {
 //        List<Shape> shapes = new ArrayList<>();
         Group shapes = new Group();
@@ -84,6 +84,10 @@ public class CarData {
         return shapes;
     }
 
+    public Group getCarShape() {
+        return carShape;
+    }
+    
     public int getNumber() {
         return number;
     }

@@ -33,18 +33,24 @@ public class CarRaceModel {
     
     public CarRaceModel(int carAmount, double width, double height) {
         this.carAmount = carAmount;
-//        this.cars = generateRandomCars(height);
         this.trackSizeX = width;
         this.trackSizeY = height;
         initializeTransitions();
     }
     
+    /**
+     * Initializes the cars variable as well as their transitions
+     */
     public static void initializeCars() {
         cars = generateRandomCars(trackSizeY);
         initializeTransitions();
     }
     
-    // Returns a list of random cars
+    /**
+     * Generates random cars
+     * @param height Height of the race track, used to determine the spacing between cars
+     * @return An ArrayList that contains random cars
+     */
     public static List<CarData> generateRandomCars(double height) {
         List<CarData> carDatas = new ArrayList();
         Random rand = new Random();
@@ -58,7 +64,10 @@ public class CarRaceModel {
     }
     
     
-    // Return the shapes of all cars
+    /**
+     * Returns an array list that contains the shapes of all the cars
+     * @return An array list that contains the shapes of all the cars
+     */
     public static List<Group> getCarShapes() {
         List<Group> carShapes = new ArrayList<>();
         
@@ -69,6 +78,9 @@ public class CarRaceModel {
         return carShapes;
     }
     
+    /**
+     * Initializes the TranslateTransitions used by the cars to simulate movement
+     */
     public static void initializeTransitions() {
         for (int i = 0; i < carAmount; i++) {
             TranslateTransition transAnim = new TranslateTransition(Duration.seconds(trackSizeY / cars.get(i).getSpeed()), cars.get(i).getCarShape());
@@ -77,7 +89,7 @@ public class CarRaceModel {
             
             final int carIdx = i;
             transAnim.setOnFinished(e -> {
-                winners.add("Car #" + cars.get(carIdx).getNumber());
+                winners.add((winners.size() + 1) + ": Car #" + cars.get(carIdx).getNumber());
             });
             
             transAnimations.add(transAnim);
@@ -89,9 +101,12 @@ public class CarRaceModel {
         }
     }
     
+    /**
+     * Changes the rate of the TranslateTransitions
+     * @param newSpeed The new rate of the transitions
+     */
     public static void changeTransitionSpeeds(double newSpeed) {
         transAnimations.forEach(anim -> {
-//            anim.pause();
             anim.setRate(newSpeed);
             
             if (isRaceStarted) {
@@ -102,7 +117,9 @@ public class CarRaceModel {
         });
     }
     
-    
+    /**
+     * Starts the transition for each car
+     */
     public static void moveCars() {
         transAnimations.forEach(anim -> {
             if (anim.getNode().getTranslateX() != trackSizeX) {
@@ -112,11 +129,17 @@ public class CarRaceModel {
         isRaceStarted = true;
     }
     
+    /**
+     * Pauses the transition for each car
+     */
     public static void stopCars() {
         transAnimations.forEach(TranslateTransition::pause);
         isRaceStarted = false;
     }
     
+    /**
+     * Resets the transition and position for each car
+     */
     public static void resetCars() {
         isRaceStarted = false;
         for (int i = 0; i < transAnimations.size(); i++) {
@@ -140,7 +163,6 @@ public class CarRaceModel {
     public static ObservableList<String> getWinners() {
         return winners;
     }
-    
     
     
 }
