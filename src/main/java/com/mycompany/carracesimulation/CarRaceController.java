@@ -53,4 +53,8 @@ public class CarRaceController implements Initializable{
         carRaceModel.stopCars();
     }
 
+    @FXML
+    void onResetButtonPressed(ActionEvent event) {
+        carRaceModel.resetCars();
+    }
 }
