@@ -1,20 +1,15 @@
 package com.mycompany.carracesimulation;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -38,6 +33,9 @@ public class CarRaceController implements Initializable{
     @FXML
     private Label speedLabel;
     
+    @FXML
+    private Label raceFinishedLabel;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         speedSlider.valueProperty().addListener((o, ov, nv) -> {
@@ -47,6 +45,10 @@ public class CarRaceController implements Initializable{
         
         
         resultsListView.setItems(CarRaceModel.getWinners());
+        resultsListView.getItems().addListener(
+                (ListChangeListener<String>) change -> {
+                    raceFinishedLabel.setVisible(true);
+                });
         
         
         // Add the cars to the pane
@@ -68,5 +70,6 @@ public class CarRaceController implements Initializable{
     @FXML
     void onResetButtonPressed(ActionEvent event) {
         CarRaceModel.resetCars();
+        raceFinishedLabel.setVisible(false);
     }
 }

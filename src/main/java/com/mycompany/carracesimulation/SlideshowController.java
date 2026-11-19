@@ -87,7 +87,6 @@ public class SlideshowController implements Initializable {
         }
         
         if (currentCarIndex < CarRaceModel.getCars().size()) {
-        System.out.println(currentCarIndex);
         slideshowPane.getChildren().clear();
 
         Group car = CarRaceModel.getCars().get(currentCarIndex).getCarShape();
