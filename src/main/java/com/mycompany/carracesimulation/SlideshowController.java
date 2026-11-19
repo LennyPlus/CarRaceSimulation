@@ -12,9 +12,12 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+
+
 /**
  * FXML Controller class
  *
@@ -33,6 +36,22 @@ public class SlideshowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Add welcome message
+        Text welcome = new Text(280, 240, "Welcome!");
+        welcome.setStyle("-fx-font-size: 30px;");
+        
+        slideshowPane.getChildren().add(welcome);
+        
+        // Create the slideshow
+//        Media media = new Media(
+//                getClass().getResource("/sounds/music.mp3").toExternalForm()
+//        );
+//
+//        MediaPlayer player = new MediaPlayer(media);
+//        player.play();
+        
+        
+        
         slideshow = new Timeline(
                 new KeyFrame(Duration.seconds(1.5), event -> {
                     showNextCar();
