@@ -56,7 +56,7 @@ public class CarRaceModel {
         Random rand = new Random();
 
         for (int i = 0; i < carAmount; i++) {
-            CarData car = new CarData(rand.nextInt(1, 100), rand.nextDouble(50, 100), new Point2D(0, height / (double) carAmount * (i + 0.5)), Color.hsb(rand.nextDouble(0, 360), 1, 1));
+            CarData car = new CarData(rand.nextInt(1, 100), rand.nextDouble(20, 50), new Point2D(0, height / (double) carAmount * (i + 0.5)), Color.hsb(rand.nextDouble(0, 360), 1, 1));
             carDatas.add(car);
         }
         
