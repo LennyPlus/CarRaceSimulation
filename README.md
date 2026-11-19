@@ -1,7 +1,7 @@
 # CarRaceSimulation
 A JavaFx application that simulates a car race with 4 or 5 cars using the Model-View-Controller architecture for the Program Development in a Graphical Environment course at Vanier. 
 
-The color and speed of each car is randomly generated at runtime. Each car can have a speed value between 50 to 100. To generate a new set of cars, close the app and reopen it.
+The color and speed of each car is randomly generated at runtime. Each car can have a speed value between 20 to 50. To generate a new set of cars, close the app and reopen it.
 
 By Anas issa
 
