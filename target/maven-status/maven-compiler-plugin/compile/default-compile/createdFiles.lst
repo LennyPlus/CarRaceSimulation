@@ -1,7 +1,6 @@
-com\mycompany\carracesimulation\App.class
 com\mycompany\carracesimulation\CarRaceModel.class
 module-info.class
-com\mycompany\carracesimulation\PrimaryController.class
+com\mycompany\carracesimulation\SlideshowController.class
 com\mycompany\carracesimulation\CarRaceController.class
+com\mycompany\carracesimulation\CarRaceFXML.class
 com\mycompany\carracesimulation\CarData.class
-com\mycompany\carracesimulation\SecondaryController.class

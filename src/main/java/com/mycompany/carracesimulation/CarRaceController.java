@@ -28,33 +28,32 @@ public class CarRaceController implements Initializable{
     
     private CarRaceModel carRaceModel;
     
-    private double trackSizeX = 512;
-    private double trackSizeY = 258;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        double height = 258;
         
-        carRaceModel = new CarRaceModel(10, trackSizeX, trackSizeY);
+//        carRaceModel = new CarRaceModel(10, trackSizeX, trackSizeY);
         
         // Generate random cars and add them to the pane
-        carRacePane.getChildren().addAll(carRaceModel.getCarShapes());
+        carRacePane.getChildren().addAll(CarRaceModel.getCarShapes());
         
     }
     
     
     @FXML
     void onStarButtonPressed(ActionEvent event) {
-        carRaceModel.moveCars();
+        CarRaceModel.moveCars();
     }
     
     @FXML
     void onPauseButtonPressed(ActionEvent event) {
-        carRaceModel.stopCars();
+        CarRaceModel.stopCars();
     }
 
     @FXML
     void onResetButtonPressed(ActionEvent event) {
-        carRaceModel.resetCars();
+        CarRaceModel.resetCars();
     }
 }

@@ -20,23 +20,28 @@ import javafx.util.Duration;
  * @author anasi
  */
 public class CarRaceModel {
-    private List<CarData> cars;
-    private List<TranslateTransition> transAnimations = new ArrayList<>();
-    private int carAmount = 10;
-    private double trackSizeY = 0;
-    private double trackSizeX = 0;
-    private CarData winner;
+    private static List<CarData> cars = new ArrayList<>();
+    private static List<TranslateTransition> transAnimations = new ArrayList<>();
+    private static int carAmount = 4;
+    private static double trackSizeX = 512;
+    private static double trackSizeY = 258;
+    private static CarData winner;
     
     public CarRaceModel(int carAmount, double width, double height) {
         this.carAmount = carAmount;
-        this.cars = generateRandomCars(height);
+//        this.cars = generateRandomCars(height);
         this.trackSizeX = width;
         this.trackSizeY = height;
         initializeTransitions();
     }
     
+    public static void initializeCars() {
+        cars = generateRandomCars(trackSizeY);
+        initializeTransitions();
+    }
+    
     // Returns a list of random cars
-    public List<CarData> generateRandomCars(double height) {
+    public static List<CarData> generateRandomCars(double height) {
         List<CarData> carDatas = new ArrayList();
         Random rand = new Random();
 
@@ -50,7 +55,7 @@ public class CarRaceModel {
     
     
     // Return the shapes of all cars
-    public List<Group> getCarShapes() {
+    public static List<Group> getCarShapes() {
         List<Group> carShapes = new ArrayList<>();
         
         for (CarData carData: cars) {
@@ -60,7 +65,7 @@ public class CarRaceModel {
         return carShapes;
     }
     
-    public void initializeTransitions() {
+    public static void initializeTransitions() {
         for (int i = 0; i < carAmount; i++) {
             TranslateTransition transAnim = new TranslateTransition(Duration.seconds(trackSizeY / cars.get(i).getSpeed()), cars.get(i).getCarShape());
             transAnim.setByX(trackSizeX);
@@ -83,15 +88,15 @@ public class CarRaceModel {
         }
     }
     
-    public void moveCars() {
+    public static void moveCars() {
         transAnimations.stream().forEach(TranslateTransition::play);
     }
     
-    public void stopCars() {
+    public static void stopCars() {
         transAnimations.stream().forEach(TranslateTransition::pause);
     }
     
-    public void resetCars() {
+    public static void resetCars() {
         for (int i = 0; i < transAnimations.size(); i++) {
             TranslateTransition anim = transAnimations.get(i);
 
@@ -105,5 +110,11 @@ public class CarRaceModel {
         
         winner = null;
     }
+
+    public static List<CarData> getCars() {
+        return cars;
+    }
+    
+    
     
 }
