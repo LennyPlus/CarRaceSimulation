@@ -10,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -30,8 +32,20 @@ public class CarRaceController implements Initializable{
     @FXML
     private ListView<String> resultsListView;
     
+    @FXML
+    private Slider speedSlider;
+    
+    @FXML
+    private Label speedLabel;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        speedSlider.valueProperty().addListener((o, ov, nv) -> {
+            CarRaceModel.changeTransitionSpeeds(nv.doubleValue());
+            speedLabel.setText(String.format("%.2f", nv.doubleValue()));
+        });
+        
+        
         resultsListView.setItems(CarRaceModel.getWinners());
         
         

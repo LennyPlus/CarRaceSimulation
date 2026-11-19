@@ -17,7 +17,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <HBox prefHeight="272.0" prefWidth="576.0" spacing="5.0">
+      <HBox prefHeight="240.0" prefWidth="576.0" spacing="5.0">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5 0 0 5; -fx-background-color: GREEN;">
                <children>
@@ -40,10 +40,11 @@
             </Pane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <HBox prefHeight="135.0" prefWidth="576.0" spacing="10.0">
          <children>
-            <VBox spacing="15.0" style="-fx-background-color: LIGHTGREY; -fx-border-color: BLACK; -fx-background-radius: 5; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+            <VBox prefWidth="310.0" spacing="15.0" style="-fx-background-color: LIGHTGREY; -fx-border-color: BLACK; -fx-background-radius: 5; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
                <children>
+                  <Region layoutX="11.0" layoutY="132.0" prefHeight="200.0" prefWidth="200.0" />
                   <HBox spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onStarButtonPressed" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: Green; -fx-background-radius: 5;" text="Start" textFill="WHITE">
@@ -65,14 +66,15 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
                   <HBox spacing="5.0">
                      <children>
                         <Label text="Simulation Speed">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Slider />
-                        <Label text="1.0x">
+                        <Slider fx:id="speedSlider" max="5.0" min="0.1" value="1.0" />
+                        <Label fx:id="speedLabel" text="1.0x">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
@@ -81,6 +83,7 @@
                         <Insets left="5.0" right="5.0" />
                      </VBox.margin>
                   </HBox>
+                  <Region layoutX="11.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
             <VBox style="-fx-background-color: LIGHTGREY; -fx-border-color: GREY; -fx-background-radius: 5; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">

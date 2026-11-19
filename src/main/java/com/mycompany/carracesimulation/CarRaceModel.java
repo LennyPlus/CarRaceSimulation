@@ -25,11 +25,11 @@ public class CarRaceModel {
     private static List<CarData> cars = new ArrayList<>();
     private static List<TranslateTransition> transAnimations = new ArrayList<>();
     private static int carAmount = 4;
-    
     // Taken from the values shown in scenebuilder
     private static double trackSizeX = 455;
-    private static double trackSizeY = 265;
+    private static double trackSizeY = 240;
     private static ObservableList<String> winners = FXCollections.observableArrayList();
+    private static boolean isRaceStarted = false;
     
     public CarRaceModel(int carAmount, double width, double height) {
         this.carAmount = carAmount;
@@ -80,7 +80,6 @@ public class CarRaceModel {
                 winners.add("Car #" + cars.get(carIdx).getNumber());
             });
             
-
             transAnimations.add(transAnim);
         }
         
@@ -90,15 +89,36 @@ public class CarRaceModel {
         }
     }
     
+    public static void changeTransitionSpeeds(double newSpeed) {
+        transAnimations.forEach(anim -> {
+//            anim.pause();
+            anim.setRate(newSpeed);
+            
+            if (isRaceStarted) {
+                if (anim.getStatus() != Animation.Status.STOPPED) {
+                    anim.play();
+                }
+            }
+        });
+    }
+    
+    
     public static void moveCars() {
-        transAnimations.stream().forEach(TranslateTransition::play);
+        transAnimations.forEach(anim -> {
+            if (anim.getNode().getTranslateX() != trackSizeX) {
+                anim.play();
+            }
+            });
+        isRaceStarted = true;
     }
     
     public static void stopCars() {
-        transAnimations.stream().forEach(TranslateTransition::pause);
+        transAnimations.forEach(TranslateTransition::pause);
+        isRaceStarted = false;
     }
     
     public static void resetCars() {
+        isRaceStarted = false;
         for (int i = 0; i < transAnimations.size(); i++) {
             TranslateTransition anim = transAnimations.get(i);
 

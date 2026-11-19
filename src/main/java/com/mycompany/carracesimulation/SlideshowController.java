@@ -53,7 +53,7 @@ public class SlideshowController implements Initializable {
         
         
         slideshow = new Timeline(
-                new KeyFrame(Duration.seconds(1.5), event -> {
+                new KeyFrame(Duration.seconds(0.2), event -> {
                     showNextCar();
                 })
         );
