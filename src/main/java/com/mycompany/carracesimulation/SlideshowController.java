@@ -26,7 +26,7 @@ public class SlideshowController implements Initializable {
     private Pane slideshowPane;
     
     private Timeline slideshow;
-    private int currentCarIndex = 0;
+    private int currentCarIndex = -1;
     
     /**
      * Initializes the controller class.
@@ -34,12 +34,12 @@ public class SlideshowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         slideshow = new Timeline(
-                new KeyFrame(Duration.seconds(0.5), event -> {
+                new KeyFrame(Duration.seconds(1.5), event -> {
                     showNextCar();
                 })
         );
 
-        slideshow.setCycleCount(CarRaceModel.getCars().size());
+        slideshow.setCycleCount(CarRaceModel.getCars().size() + 2);
         
         slideshow.setOnFinished(eh -> {
             try {
@@ -54,6 +54,13 @@ public class SlideshowController implements Initializable {
     
     
     private void showNextCar() {
+        if (currentCarIndex == -1) {
+            currentCarIndex++;
+            return;
+        }
+        
+        if (currentCarIndex < CarRaceModel.getCars().size()) {
+        System.out.println(currentCarIndex);
         slideshowPane.getChildren().clear();
 
         Group car = CarRaceModel.getCars().get(currentCarIndex).getCarShape();
@@ -70,6 +77,7 @@ public class SlideshowController implements Initializable {
         slideshowPane.getChildren().add(container);
 
         currentCarIndex++;
+        }
+            
     }
-    
 }
