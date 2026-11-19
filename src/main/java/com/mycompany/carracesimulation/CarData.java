@@ -43,13 +43,20 @@ public class CarData {
     public Group generateCarShape() {
 //        List<Shape> shapes = new ArrayList<>();
         Group shapes = new Group();
-        Shape poly = new Polygon(0.0, 0.0,
-                20.0, 10.0,
-                10.0, 20.0);
-        Shape wheel1 = new Circle(0, 10, 5);
-        Shape wheel2 = new Circle(20, 10, 5);
+        Shape poly = new Polygon(
+                -20, 0,
+                -19, -11,
+                -9, -14,
+                -7, -25,
+                7, -25,
+                9, -14,
+                19, -11,
+                20, 0);
+        Shape wheel1 = new Circle(-12, 0, 5);
+        Shape wheel2 = new Circle(12, 0, 5);
         Shape text = new Text(String.valueOf(number));
-        text.setTranslateY(10);
+        text.setTranslateY(-5);
+        text.setTranslateX(-5);
 
         // Set color
         poly.setFill(color);
