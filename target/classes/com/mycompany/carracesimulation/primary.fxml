@@ -10,60 +10,93 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="418.0" prefWidth="616.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.carracesimulation.CarRaceController">
+<VBox alignment="CENTER" prefHeight="440.0" prefWidth="616.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.carracesimulation.CarRaceController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <HBox spacing="5.0">
+      <HBox prefHeight="272.0" prefWidth="576.0" spacing="5.0">
          <children>
-            <Label prefHeight="258.0" style="-fx-background-color: GREEN; -fx-background-radius: 5 0 0 5;" text="Starting" wrapText="true">
-               <font>
-                  <Font name="0xProto Nerd Font Mono" size="14.0" />
-               </font>
-            </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5 0 0 5; -fx-background-color: GREEN;">
+               <children>
+                  <Text fill="WHITE" layoutX="-91.0" layoutY="149.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
             <Pane fx:id="carRacePane" prefWidth="600.0" style="-fx-background-color: GREY;" />
-            <Label layoutX="10.0" layoutY="10.0" prefHeight="258.0" prefWidth="0.0" style="-fx-background-color: GREEN; -fx-background-radius: 0 5 5 0;" text="Arrival" wrapText="true">
-               <font>
-                  <Font name="0xProto Nerd Font Mono" size="14.0" />
-               </font>
-            </Label>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5 0 0 5; -fx-background-color: GREEN;">
+               <children>
+                  <Text fill="WHITE" layoutX="-95.0" layoutY="147.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <VBox>
+            <VBox spacing="15.0" style="-fx-background-color: LIGHTGREY; -fx-border-color: BLACK; -fx-background-radius: 5; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
                <children>
                   <HBox spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onStarButtonPressed" text="Start" />
+                        <Button mnemonicParsing="false" onAction="#onStarButtonPressed" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: Green; -fx-background-radius: 5;" text="Start" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Button>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onPauseButtonPressed" text="Pause" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onPauseButtonPressed" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-background-color: BLUE;" text="Pause" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button layoutX="60.0" layoutY="10.0" mnemonicParsing="false" onAction="#onResetButtonPressed" text="Reset" />
+                        <Button layoutX="60.0" layoutY="10.0" mnemonicParsing="false" onAction="#onResetButtonPressed" prefHeight="40.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-background-color: RED;" text="Reset" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
+                  <HBox spacing="5.0">
                      <children>
-                        <Label text="Simulation Speed" />
+                        <Label text="Simulation Speed">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
                         <Slider />
-                        <Label text="1.0x" />
+                        <Label text="1.0x">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
                      </children>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
-            <VBox>
+            <VBox style="-fx-background-color: LIGHTGREY; -fx-border-color: GREY; -fx-background-radius: 5; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Race Finished!" />
+                  <Label text="Race Finished!">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <Label text="Final Results:" />
-                  <ListView fx:id="resultsListView" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="resultsListView" />
                </children>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
    </children>
 </VBox>

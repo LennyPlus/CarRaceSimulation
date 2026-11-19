@@ -25,9 +25,10 @@ public class CarRaceModel {
     private static List<CarData> cars = new ArrayList<>();
     private static List<TranslateTransition> transAnimations = new ArrayList<>();
     private static int carAmount = 4;
-    private static double trackSizeX = 512;
-    private static double trackSizeY = 258;
-//    private static List<CarData> winners = new ArrayList<>();
+    
+    // Taken from the values shown in scenebuilder
+    private static double trackSizeX = 455;
+    private static double trackSizeY = 265;
     private static ObservableList<String> winners = FXCollections.observableArrayList();
     
     public CarRaceModel(int carAmount, double width, double height) {
