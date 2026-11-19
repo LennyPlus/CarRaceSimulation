@@ -45,9 +45,12 @@ public class CarRaceController implements Initializable{
     
     @FXML
     void onStarButtonPressed(ActionEvent event) {
-        System.out.println("hiii");
         carRaceModel.moveCars();
     }
     
+    @FXML
+    void onPauseButtonPressed(ActionEvent event) {
+        carRaceModel.stopCars();
+    }
 
 }

@@ -29,6 +29,7 @@ public class CarRaceModel {
         this.cars = generateRandomCars(height);
         this.trackSizeX = width;
         this.trackSizeY = height;
+        initializeTransitions();
     }
     
     // Returns a list of random cars
@@ -56,13 +57,16 @@ public class CarRaceModel {
         return carShapes;
     }
     
-    public void moveCars() {
+    public void initializeTransitions() {
         for (int i = 0; i < carAmount; i++) {
             TranslateTransition transAnim = new TranslateTransition(Duration.seconds(trackSizeY / cars.get(i).getSpeed()), cars.get(i).getCarShape());
             transAnim.setByX(trackSizeX);
             transAnimations.add(transAnim);
-            transAnim.play();
         }
+    }
+    
+    public void moveCars() {
+        transAnimations.stream().forEach(TranslateTransition::play);
     }
     
     public void stopCars() {
