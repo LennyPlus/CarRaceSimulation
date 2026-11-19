@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -26,17 +27,15 @@ public class CarRaceController implements Initializable{
     @FXML
     private Pane carRacePane;
     
-    private CarRaceModel carRaceModel;
-    
-
+    @FXML
+    private ListView<String> resultsListView;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        double height = 258;
+        resultsListView.setItems(CarRaceModel.getWinners());
         
-//        carRaceModel = new CarRaceModel(10, trackSizeX, trackSizeY);
         
-        // Generate random cars and add them to the pane
+        // Add the cars to the pane
         carRacePane.getChildren().addAll(CarRaceModel.getCarShapes());
         
     }

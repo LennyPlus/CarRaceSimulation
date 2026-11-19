@@ -10,6 +10,8 @@ import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -25,7 +27,8 @@ public class CarRaceModel {
     private static int carAmount = 4;
     private static double trackSizeX = 512;
     private static double trackSizeY = 258;
-    private static CarData winner;
+//    private static List<CarData> winners = new ArrayList<>();
+    private static ObservableList<String> winners = FXCollections.observableArrayList();
     
     public CarRaceModel(int carAmount, double width, double height) {
         this.carAmount = carAmount;
@@ -73,9 +76,7 @@ public class CarRaceModel {
             
             final int carIdx = i;
             transAnim.setOnFinished(e -> {
-                if (winner == null) {
-                    winner = cars.get(carIdx);
-                }
+                winners.add("Car #" + cars.get(carIdx).getNumber());
             });
             
 
@@ -108,11 +109,15 @@ public class CarRaceModel {
             anim.getNode().setTranslateX(0);
         }
         
-        winner = null;
+        winners.clear();
     }
 
     public static List<CarData> getCars() {
         return cars;
+    }
+
+    public static ObservableList<String> getWinners() {
+        return winners;
     }
     
     
